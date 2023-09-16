@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 193202079}
   - component: {fileID: 193202078}
   - component: {fileID: 193202077}
+  - component: {fileID: 193202082}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -159,6 +160,8 @@ MonoBehaviour:
   wasd: 0
   id: 2
   moveSpeed: 10
+  jumpVelocity: 10
+  controls: 11010000140100001201000013010000
 --- !u!50 &193202078
 Rigidbody2D:
   serializedVersion: 4
@@ -298,6 +301,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!247 &193202082
+ConstantForce2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193202076}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0}
+  m_RelativeForce: {x: 0, y: 0}
+  m_Torque: 0
 --- !u!1 &404302030
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,8 +967,9 @@ GameObject:
   - component: {fileID: 1510609279}
   - component: {fileID: 1510609278}
   - component: {fileID: 1510609277}
-  - component: {fileID: 1510609276}
   - component: {fileID: 1510609275}
+  - component: {fileID: 1510609280}
+  - component: {fileID: 1510609281}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -989,22 +1004,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1510609276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510609274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76607e7571a6014585f4fd35f663753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: down
-  wasd: 1
-  id: 1
-  moveSpeed: 10
 --- !u!61 &1510609277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1117,6 +1116,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!247 &1510609280
+ConstantForce2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510609274}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0}
+  m_RelativeForce: {x: 0, y: 0}
+  m_Torque: 0
+--- !u!114 &1510609281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510609274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6486ec67f4490458dad6cd02a4049b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wasd: 1
+  id: 2
+  moveSpeed: 10
+  jumpVelocity: 10
+  fallOff: 3
+  fallMultiplier: 4
+  controls: 11010000140100001201000013010000
 --- !u!1 &2107930890
 GameObject:
   m_ObjectHideFlags: 0
