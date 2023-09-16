@@ -32,7 +32,6 @@ public class DownMovement : MonoBehaviour
             rb.velocity=(transform.up*jumpVelocity);
         }
         if(rb.velocity.y < fallOff){
-            print("falloff");
              rb.velocity += (transform.up * cf.force * fallMultiplier  * Time.deltaTime);
         }
     }
