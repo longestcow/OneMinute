@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 193202080}
   - component: {fileID: 193202079}
   - component: {fileID: 193202078}
-  - component: {fileID: 193202077}
   - component: {fileID: 193202082}
+  - component: {fileID: 193202083}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -144,24 +144,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &193202077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193202076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76607e7571a6014585f4fd35f663753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: left
-  wasd: 0
-  id: 2
-  moveSpeed: 10
-  jumpVelocity: 10
-  controls: 11010000140100001201000013010000
 --- !u!50 &193202078
 Rigidbody2D:
   serializedVersion: 4
@@ -187,7 +169,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &193202079
 BoxCollider2D:
@@ -198,7 +180,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 193202076}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0bc866fb796bdf84aac6f2802884ef0a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -295,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 193202076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.939, y: 0, z: 0}
+  m_LocalPosition: {x: 6.78, y: 0.19, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -312,6 +294,25 @@ ConstantForce2D:
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: 0, y: 0}
   m_Torque: 0
+--- !u!114 &193202083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193202076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7aa966fe9baeb54284078ca1a255585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wasd: 1
+  id: 2
+  moveSpeed: 10
+  jumpVelocity: 10
+  fallOff: 2
+  fallMultiplier: 2
+  controls: 11010000140100001201000013010000
 --- !u!1 &404302030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1003,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &1510609277
 BoxCollider2D:
@@ -1013,7 +1014,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1510609274}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0bc866fb796bdf84aac6f2802884ef0a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1110,7 +1111,7 @@ Transform:
   m_GameObject: {fileID: 1510609274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.837, y: 0, z: 0}
+  m_LocalPosition: {x: 0.16, y: 4.13, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1139,12 +1140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6486ec67f4490458dad6cd02a4049b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wasd: 1
-  id: 2
+  wasd: 0
+  id: 1
   moveSpeed: 10
-  jumpVelocity: 10
+  jumpVelocity: 6
   fallOff: 3
-  fallMultiplier: 4
+  fallMultiplier: 2
   controls: 11010000140100001201000013010000
 --- !u!1 &2107930890
 GameObject:
