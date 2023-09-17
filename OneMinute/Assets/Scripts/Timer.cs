@@ -9,9 +9,10 @@ public class Timer : MonoBehaviour
     public float timeValue = 60;
     public Text timeText;
     public Text timeUpText;
-
+    bool won=false;
     void Update()
     {
+        if(won) return;
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;
@@ -19,7 +20,8 @@ public class Timer : MonoBehaviour
         else
         {
             timeValue = 0;
-            timeUpText.text = "Time Up!";
+            timeUpText.text = "Time's Up!";
+            GameObject.Find("GameManager").GetComponent<GameManager>().timeOver(false);
         }
         DisplayTime(timeValue);
     }
@@ -34,5 +36,9 @@ public class Timer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+    public void victory()
+    {
+        won=true;
     }
 }

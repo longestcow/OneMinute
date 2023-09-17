@@ -69,7 +69,7 @@ public class LeftMovement : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
-       else if(other.gameObject.name.Equals("flagRed")){
+       else if(other.gameObject.name=="flagRed"){
             gm.nextLevel();
             AudioManager.instance.Play("FlagCapture");
 

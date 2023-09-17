@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    public int curr = 0;
+    public int curr = -1;
+    int levelCount = 8;
     public GameObject player1, player2;
     public List<GameObject> levels; // lvl1Obj, lvl2Obj....
     public GameObject bestTime, highScore, mainMenu, timer, timeUp;
@@ -15,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        for(int i = 1; i<=7; i++){
+        for(int i = 1; i<=8; i++){
             levels.Add(GameObject.Find("Lvl"+i));
         }
         timer.SetActive(false); timeUp.SetActive(false);
@@ -45,7 +47,15 @@ public class GameManager : MonoBehaviour
 
     public void nextLevel()
     {
+
         curr+=1;
+        if(curr==levelCount){
+            timer.GetComponent<Timer>().victory();
+            timer.SetActive(false);
+            timeUp.GetComponent<Text>().text="You win!";
+            timeOver(true);
+
+        }
         Camera.main.transform.position+=new Vector3(30,0,0);
         player1.transform.position=levels[curr].transform.Find("sp1").position;
         player2.transform.position=levels[curr].transform.Find("sp2").position;    
@@ -55,15 +65,23 @@ public class GameManager : MonoBehaviour
     }
     void restart()
     {
+        player1.transform.position=levels[curr].transform.Find("sp1").position;
+        player2.transform.position=levels[curr].transform.Find("sp2").position;
         for(int i = 0; i < levels[curr].transform.Find("powerUps").childCount; i++){
             levels[curr].transform.Find("powerUps").GetChild(i).gameObject.SetActive(true);
         }
  
-        player1.transform.position=levels[curr].transform.Find("sp1").position;
-        player2.transform.position=levels[curr].transform.Find("sp2").position;
+
 
     }
-    void timeOver(){
-        //playerPref set highscore, show loss screen
+    public void timeOver(bool win){
+        try{
+            levels[curr].transform.Find("flagBlue").gameObject.SetActive(false);
+        } catch(Exception){
+            levels[curr].transform.Find("flagRed").gameObject.SetActive(false);
+        }
+        PlayerPrefs.SetInt("hScore", curr);
+        // if(win)
+        //     PlayerPrefs.SetInt("bTime")
     }
 }

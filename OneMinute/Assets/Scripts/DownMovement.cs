@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DownMovement : MonoBehaviour
 {
     public bool wasd = true;
@@ -70,7 +71,7 @@ public class DownMovement : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
-        else if(other.gameObject.name.Equals("flagBlue")){
+        else if(other.gameObject.name == "flagBlue"){
             gm.nextLevel();
             AudioManager.instance.Play("FlagCapture");
 
