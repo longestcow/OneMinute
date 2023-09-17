@@ -30,11 +30,13 @@ public class LeftMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(controls[0]) && (feet.IsTouchingLayers(LayerMask.GetMask("wall"))||feet.IsTouchingLayers(LayerMask.GetMask("player")))){ //jump
             rb.velocity=new Vector2((transform.right*jumpVelocity).x, rb.velocity.y);
+            AudioManager.instance.Play("P2Jump");
             //play jump sfx
         }
         else if(Input.GetKeyDown(controls[0]) && dJump>0){
             rb.velocity=new Vector2((transform.right*(jumpVelocity*1.25f)).x, rb.velocity.y);
             dJump-=1;
+            AudioManager.instance.Play("DoubleJump");
             //play double jump sfx
         }
         if(rb.velocity.x < fallOff){
@@ -45,6 +47,7 @@ public class LeftMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.layer==7){
+            AudioManager.instance.Play("P2Powerup");
             //play powerup sfx
             if(other.gameObject.name.StartsWith("dJump")){
                 dJump+=1;
