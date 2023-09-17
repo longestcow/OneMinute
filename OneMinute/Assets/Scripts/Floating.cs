@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class Floating : MonoBehaviour
 {
     Vector3 sPos, tPos;
     float amp=0.1f, freq=1f;

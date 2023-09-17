@@ -39,9 +39,9 @@ public class LeftMovement : MonoBehaviour
             AudioManager.instance.Play("DoubleJump");
             //play double jump sfx
         }
-        if(rb.velocity.x < fallOff){
+        if(rb.velocity.x < fallOff)
              rb.velocity += (transform.right * cf.force * fallMultiplier  * Time.deltaTime);
-        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -49,12 +49,12 @@ public class LeftMovement : MonoBehaviour
         if(other.gameObject.layer==7){
             AudioManager.instance.Play("P2Powerup");
             //play powerup sfx
-            if(other.gameObject.name.StartsWith("dJump")){
+            if(other.gameObject.name.StartsWith("dJump"))
                 dJump+=1;
-            }
-            else if(other.gameObject.name.StartsWith("dash")){
+            else if(other.gameObject.name.StartsWith("dash"))
                 dash+=1;
-            }
+            
+            other.gameObject.SetActive(false);
         }
     }
 }

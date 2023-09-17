@@ -42,9 +42,9 @@ public class DownMovement : MonoBehaviour
             //play double jump sfx
         }
  
-        if(rb.velocity.y < fallOff){
+        if(rb.velocity.y < fallOff)
              rb.velocity += (transform.up * cf.force * fallMultiplier  * Time.deltaTime);
-        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -52,14 +52,13 @@ public class DownMovement : MonoBehaviour
         if(other.gameObject.layer==7){
             AudioManager.instance.Play("P1Powerup");
             //play powerup sfx
-            if(other.gameObject.name.StartsWith("dJump")){
+            if(other.gameObject.name.StartsWith("dJump"))
                 dJump+=1;
-            }
-            else if(other.gameObject.name.StartsWith("dash")){
+            else if(other.gameObject.name.StartsWith("dash"))
                 dash+=1;
-            }
+            
 
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 
