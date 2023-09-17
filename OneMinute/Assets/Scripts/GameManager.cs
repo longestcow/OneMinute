@@ -8,7 +8,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public int curr = -1;
-    int levelCount = 8;
+    int levelCount = 13;
     public GameObject player1, player2;
     public List<GameObject> levels; // lvl1Obj, lvl2Obj....
     public GameObject bestTime, highScore, mainMenu, timer, timeUp;
@@ -17,14 +17,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        for(int i = 1; i<=8; i++){
+        for(int i = 1; i<=levelCount; i++){
             levels.Add(GameObject.Find("Lvl"+i));
         }
         timer.SetActive(false); timeUp.SetActive(false);
         bestTime.SetActive(true); highScore.SetActive(true); mainMenu.SetActive(true);
         bestTime.GetComponent<Text>().text="<color=#F33D3D>Best Time</color>: <color=#2D7B9D>"+(PlayerPrefs.HasKey("bTime")?PlayerPrefs.GetInt("bTime"):"01:00")+"</color>";
         highScore.GetComponent<Text>().text="<color=#F33D3D>High Score</color>: <color=#2D7B9D>"+(PlayerPrefs.HasKey("hScore")?PlayerPrefs.GetInt("hScore"):"0")+"</color>";
-        Camera.main.transform.position = new Vector3(-28.55f,0,0);
+        Camera.main.transform.position = new Vector3(-28.55f,-1,-10);
 
     }
     // Update is called once per frame
