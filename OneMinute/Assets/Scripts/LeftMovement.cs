@@ -9,9 +9,12 @@ public class LeftMovement : MonoBehaviour
     Rigidbody2D rb;
     ConstantForce2D cf;
     public CircleCollider2D feet;
+    public GameManager gm;
+    bool grounded = false;
     public KeyCode[] controls={KeyCode.UpArrow, KeyCode.LeftArrow, KeyCode.DownArrow, KeyCode.RightArrow};
     void Awake()
     {
+        gm=GameObject.Find("GameManager").GetComponent<GameManager>();
         rb=GetComponent<Rigidbody2D>();
         cf=GetComponent<ConstantForce2D>();
         if(wasd){
@@ -25,10 +28,19 @@ public class LeftMovement : MonoBehaviour
 
     void Update()
     {
+        if(!grounded && (feet.IsTouchingLayers(LayerMask.GetMask("wall"))||feet.IsTouchingLayers(LayerMask.GetMask("player")))){
+            grounded=true;
+            AudioManager.instance.Play("Drop2");
+        }
+        else if(grounded && !(feet.IsTouchingLayers(LayerMask.GetMask("wall"))||feet.IsTouchingLayers(LayerMask.GetMask("player"))))
+            grounded=false;
+        
+
+        
         if(!(Input.GetKeyUp(controls[3]) && Input.GetKeyUp(controls[1]))){ //movement
             rb.velocity = new Vector2(rb.velocity.x,(((Input.GetKeyUp(controls[1]) || Input.GetKeyUp(controls[3]))?0:Input.GetAxis("Horizontal"+(wasd?2:1)) * moveSpeed) * transform.right).x*-1);
         }
-        if(Input.GetKeyDown(controls[0]) && (feet.IsTouchingLayers(LayerMask.GetMask("wall"))||feet.IsTouchingLayers(LayerMask.GetMask("player")))){ //jump
+        if(Input.GetKeyDown(controls[0]) && grounded){ //jump
             rb.velocity=new Vector2((transform.right*jumpVelocity).x, rb.velocity.y);
             AudioManager.instance.Play("P2Jump");
             //play jump sfx
