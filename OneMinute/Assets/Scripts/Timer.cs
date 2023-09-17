@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
 {
     public float timeValue = 60;
     public Text timeText;
+    public Text timeUpText;
+
     void Update()
     {
         if (timeValue > 0)
@@ -17,6 +19,7 @@ public class Timer : MonoBehaviour
         else
         {
             timeValue = 0;
+            timeUpText.text = "Time Up!";
         }
         DisplayTime(timeValue);
     }
@@ -27,7 +30,6 @@ public class Timer : MonoBehaviour
         {
             timeToDisplay = 0;
         }
-
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
