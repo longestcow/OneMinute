@@ -32,11 +32,13 @@ public class DownMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(controls[0]) && (feet.IsTouchingLayers(LayerMask.GetMask("wall"))||feet.IsTouchingLayers(LayerMask.GetMask("player")))){ //jump
             rb.velocity=(transform.up*jumpVelocity);
+            AudioManager.instance.Play("P1Jump");
                 //play jump sfx
         }
         else if(Input.GetKeyDown(controls[0]) && dJump>0){
             rb.velocity=(transform.up*(jumpVelocity*1.25f));
             dJump-=1;
+            AudioManager.instance.Play("DoubleJump");
             //play double jump sfx
         }
  
@@ -48,6 +50,7 @@ public class DownMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.layer==7){
+            AudioManager.instance.Play("P1Powerup");
             //play powerup sfx
             if(other.gameObject.name.StartsWith("dJump")){
                 dJump+=1;
