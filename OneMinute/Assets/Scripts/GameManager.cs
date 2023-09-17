@@ -46,8 +46,9 @@ public class GameManager : MonoBehaviour
     void nextLevel()
     {
         curr+=1;
-        Camera.main.transform.position+=new Vector2()
-        player1.transform.position=
+        Camera.main.transform.position+=new Vector3(30,0,0);
+        player1.transform.position=levels[curr].transform.Find("sp1").position;
+        player2.transform.position=levels[curr].transform.Find("sp2").position;    
         
         //if level is last, playerPref set victory and time, show win screen
         

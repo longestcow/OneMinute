@@ -68,5 +68,9 @@ public class LeftMovement : MonoBehaviour
             
             other.gameObject.SetActive(false);
         }
+
+        else if(other.gameObject.layer==8){
+            
+        }
     }
 }
