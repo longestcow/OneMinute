@@ -5,7 +5,8 @@ using UnityEngine;
 public class Floating : MonoBehaviour
 {
     Vector3 sPos, tPos;
-    float amp=0.1f, freq=1f;
+    public float amp=0.1f, freq=1f;
+    public bool y = true;
     void Start()
     {
         sPos = transform.position;
@@ -13,7 +14,11 @@ public class Floating : MonoBehaviour
     void Update()
     {
         tPos=sPos;
-        tPos.y+= Mathf.Sin (Time.fixedTime * Mathf.PI * freq) * amp;
+        if(y)
+            tPos.y+= Mathf.Sin (Time.fixedTime * Mathf.PI * freq) * amp;
+        else
+            tPos.x+= Mathf.Sin (Time.fixedTime * Mathf.PI * freq) * amp;
+
         transform.position=tPos;
     }
 }
