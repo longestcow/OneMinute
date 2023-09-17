@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        for(int i = 1; i<=1; i++){
+        for(int i = 1; i<=7; i++){
             levels.Add(GameObject.Find("Lvl"+i));
         }
         timer.SetActive(false); timeUp.SetActive(false);
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void nextLevel()
+    public void nextLevel()
     {
         curr+=1;
         Camera.main.transform.position+=new Vector3(30,0,0);

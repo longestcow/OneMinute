@@ -69,6 +69,12 @@ public class DownMovement : MonoBehaviour
 
             other.gameObject.SetActive(false);
         }
+
+        else if(other.gameObject.name.Equals("flagBlue")){
+            gm.nextLevel();
+            AudioManager.instance.Play("FlagCapture");
+
+       }
     }
 
 }
