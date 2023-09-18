@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         }
         timer.SetActive(false); timeUp.SetActive(false);
         bestTime.SetActive(true); highScore.SetActive(true); mainMenu.SetActive(true);
-        bestTime.GetComponent<Text>().text="<color=#F33D3D>Best Time</color>: <color=#2D7B9D>"+(PlayerPrefs.HasKey("bTime")?PlayerPrefs.GetInt("bTime"):"01:00")+"</color>";
+        bestTime.GetComponent<Text>().text="<color=#F33D3D>Best Time</color>: <color=#2D7B9D>"+(PlayerPrefs.HasKey("bTime")?PlayerPrefs.GetString("bTime"):"01:00")+"</color>";
         highScore.GetComponent<Text>().text="<color=#F33D3D>High Score</color>: <color=#2D7B9D>"+(PlayerPrefs.HasKey("hScore")?PlayerPrefs.GetInt("hScore"):"0")+"</color>";
         Camera.main.transform.position = new Vector3(-28.55f,-1,-10);
 
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
             levels[curr].transform.Find("flagRed").gameObject.SetActive(false);
         }
         PlayerPrefs.SetInt("hScore", curr);
-        // if(win)
-        //     PlayerPrefs.SetInt("bTime")
+        if (win)
+            PlayerPrefs.SetString("bTime", timer.GetComponent<Text>().text);
     }
 }
