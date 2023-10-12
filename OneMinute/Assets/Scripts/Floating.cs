@@ -14,11 +14,14 @@ public class Floating : MonoBehaviour
     void Update()
     {
         tPos=sPos;
-        if(y)
+        if(y){
             tPos.y+= Mathf.Sin (Time.fixedTime * Mathf.PI * freq) * amp;
-        else
+            tPos.x=transform.position.x;
+        }
+        else{
             tPos.x+= Mathf.Sin (Time.fixedTime * Mathf.PI * freq) * amp;
-
+            tPos.y=transform.position.y;
+        }
         transform.position=tPos;
     }
 }

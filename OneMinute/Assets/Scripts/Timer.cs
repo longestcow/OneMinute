@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
         else
         {
             timeValue = 0;
-            timeUpText.text = "Time's Up!";
+            timeUpText.text = "<color=#F33D3D>Time's</color> <color=#2D7B9D>Up!</color>";
             GameObject.Find("GameManager").GetComponent<GameManager>().timeOver(false);
         }
         DisplayTime(timeValue);
@@ -40,5 +40,6 @@ public class Timer : MonoBehaviour
     public void victory()
     {
         won=true;
+        timeUpText.text="<color=#F33D3D>You</color> <color=#2D7B9D>win!</color>";//finishing time and ranking in lb
     }
 }
